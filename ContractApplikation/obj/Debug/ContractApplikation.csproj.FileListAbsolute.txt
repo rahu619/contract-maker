@@ -1,0 +1,11 @@
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\obj\Debug\ContractApplikation.csprojResolveAssemblyReference.cache
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\obj\Debug\ContractApplikation.ContractDetails.resources
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\obj\Debug\ContractApplikation.Properties.Resources.resources
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\obj\Debug\ContractApplikation.csproj.GenerateResource.cache
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\obj\Debug\ContractApplikation.csproj.CoreCompileInputs.cache
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\bin\Debug\Vertrag-DB.accdb
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\bin\Debug\ContractApplikation.exe.config
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\bin\Debug\ContractApplikation.exe
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\bin\Debug\ContractApplikation.pdb
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\obj\Debug\ContractApplikation.exe
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\obj\Debug\ContractApplikation.pdb
