@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Linq;
 using System.Windows.Forms;
+using ContractApplikation.src.helper;
 using ContractApplikation.Src.Model;
 
 namespace ContractApplikation
@@ -19,7 +20,7 @@ namespace ContractApplikation
 
         private void createCustomer_Click(object sender, EventArgs e)
         {
-            if (customDetailIsValid())
+            if (customerDetailIsValid())
             {
                 var controlsForCustomerTabPage = this.Controls[0].Controls[0].Controls;
                 Ansprechpartner kunden = generateCustomerWithControl(controlsForCustomerTabPage);
@@ -79,7 +80,7 @@ namespace ContractApplikation
         }
 
 
-        private bool customDetailIsValid()
+        private bool customerDetailIsValid()
         {
             var controlsForCustomerTabPage = this.Controls[0].Controls[0].Controls;
 
@@ -100,5 +101,19 @@ namespace ContractApplikation
             return false;
         }
 
+        private void createProjectBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ContractDetails_Load(object sender, EventArgs e)
+        {
+            OleDbHelper helper = OleDbHelper.sharedInstance;
+
+            helper.FetchProjectDetails();
+
+            helper.FetchCustomerDetails();
+
+        }
     }
 }

@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\helper\OleDbHelper.cs" />
     <Compile Include="src\helper\Utilities.cs" />
     <Compile Include="ContractDetails.cs">
       <SubType>Form</SubType>
