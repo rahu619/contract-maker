@@ -8,11 +8,9 @@ namespace ContractApplikation.src.helper
 {
     public class OleDbHelper
     {
-        public static OleDbHelper sharedInstance = new OleDbHelper();
-
         private const string CONNECTION_STRING = @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\Vertrag-DB.accdb";
 
-        private OleDbConnection openConnection()
+        private static OleDbConnection OpenConnection()
         {
             OleDbConnection conn = new OleDbConnection();
             conn.ConnectionString = CONNECTION_STRING;
@@ -20,12 +18,12 @@ namespace ContractApplikation.src.helper
             return conn;
         }
 
-        private void closeConnection(OleDbConnection conn)
+        private static void CloseConnection(OleDbConnection conn)
         {
             conn.Close();
         }
 
-        private void AddCustomerDetailToDatabase(Ansprechpartner kunden, OleDbConnection conn)
+        private static void AddCustomerDetailToDatabase(Ansprechpartner kunden, OleDbConnection conn)
         {
             var cmd = new OleDbCommand("INSERT INTO Ansprechpartner " +
                     "(Bezeichnung, Vorname, Nachname, Abteilung, Email, Telefon, Strasse, Ort, Firma, Abteilungszusatz, Geschäftsbereich) " +
@@ -50,7 +48,7 @@ namespace ContractApplikation.src.helper
             }
         }
 
-        private void AddProjectDetailToDatabase(Projekt project, OleDbConnection conn)
+        private static void AddProjectDetailToDatabase(Projekt project, OleDbConnection conn)
         {
             var cmd = new OleDbCommand("INSERT INTO Projekt " +
                     "(Projektnummer, StartDatum, EndDatum, AnsprechpartnerID, AnzahlStunden, Verrechnungssatz, ProjektTitel, Gesprächsperson, Disponent, ProjektBeschreibung) " +
@@ -74,13 +72,13 @@ namespace ContractApplikation.src.helper
             }
         }
 
-        public bool InsertCustomerDetail(Ansprechpartner kunden)
+        public static bool InsertCustomerDetail(Ansprechpartner kunden)
         {
             try
             {
-                OleDbConnection conn = openConnection();
+                OleDbConnection conn = OpenConnection();
                 AddCustomerDetailToDatabase(kunden, conn);
-                closeConnection(conn);
+                CloseConnection(conn);
             }
             catch(Exception e)
             {
@@ -91,13 +89,13 @@ namespace ContractApplikation.src.helper
             return true;
         }
 
-        public bool InsertProjectDetail(Projekt projekt)
+        public static bool InsertProjectDetail(Projekt projekt)
         {
             try
             {
-                OleDbConnection conn = openConnection();
+                OleDbConnection conn = OpenConnection();
                 AddProjectDetailToDatabase(projekt, conn);
-                closeConnection(conn);
+                CloseConnection(conn);
             }
             catch (Exception e)
             {
@@ -108,42 +106,50 @@ namespace ContractApplikation.src.helper
             return true;
         }
 
-        public void FetchCustomerDetails()
+        public static List<Ansprechpartner> FetchCustomerDetails()
         {
             try
             {
                 List<Ansprechpartner> customerList = new List<Ansprechpartner>();
                 OleDbDataReader dr = null;
-                var cmd = new OleDbCommand("SELECT * FROM Ansprechpartner", openConnection());
+                var cmd = new OleDbCommand("SELECT * FROM Ansprechpartner", OpenConnection());
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
                     customerList.Add(new Ansprechpartner(dr));
                 }
+
+                return customerList;
             }
             catch (Exception e)
             {
                 MessageBox.Show("Error: " + e.Message);
             }
+
+            return null;
         }
 
-        public void FetchProjectDetails()
+        public static List<Projekt> FetchProjectDetails()
         {
             try
             {
                 List<Projekt> projectList = new List<Projekt>();
                 OleDbDataReader dr = null;
-                var cmd = new OleDbCommand("SELECT * FROM Projekt", openConnection());
+                var cmd = new OleDbCommand("SELECT * FROM Projekt", OpenConnection());
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
                     projectList.Add(new Projekt(dr));
                 }
+
+                return projectList;
             }
             catch (Exception e)
             {
                 MessageBox.Show("Error: " + e.Message);
             }
+
+            return null;
         }
     }
 }

@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\helper\CustomComboBoxItem.cs" />
     <Compile Include="src\helper\OleDbHelper.cs" />
     <Compile Include="src\helper\Utilities.cs" />
     <Compile Include="ContractDetails.cs">
@@ -53,6 +54,7 @@
     <Compile Include="ContractDetails.Designer.cs">
       <DependentUpon>ContractDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\model\DataManager.cs" />
     <Compile Include="src\model\Projekt.cs" />
     <Compile Include="src\model\Ansprechpartner.cs" />
     <Compile Include="Program.cs" />

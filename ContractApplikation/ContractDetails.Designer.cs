@@ -74,9 +74,14 @@
             this.projektnummer = new System.Windows.Forms.TextBox();
             this.projektnummerLbl = new System.Windows.Forms.Label();
             this.Angebot = new System.Windows.Forms.TabPage();
+            this.backgrdDBWorker = new System.ComponentModel.BackgroundWorker();
+            this.projektComboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.ContractGenerator.SuspendLayout();
             this.Ansprechpartner.SuspendLayout();
             this.Projekt.SuspendLayout();
+            this.Angebot.SuspendLayout();
             this.SuspendLayout();
             // 
             // ContractGenerator
@@ -131,7 +136,7 @@
             this.createCustomerBtn.TabIndex = 22;
             this.createCustomerBtn.Text = "Neu Kunden erstellen";
             this.createCustomerBtn.UseVisualStyleBackColor = true;
-            this.createCustomerBtn.Click += new System.EventHandler(this.createCustomer_Click);
+            this.createCustomerBtn.Click += new System.EventHandler(this.CreateCustomerBtnClicked);
             // 
             // ort
             // 
@@ -352,7 +357,7 @@
             this.createProjectBtn.TabIndex = 23;
             this.createProjectBtn.Text = "Neu Projekt erstellen";
             this.createProjectBtn.UseVisualStyleBackColor = true;
-            this.createProjectBtn.Click += new System.EventHandler(this.createProjectBtn_Click);
+            this.createProjectBtn.Click += new System.EventHandler(this.CreateProjectBtnClicked);
             // 
             // ansprechpartnerComboBox
             // 
@@ -503,12 +508,46 @@
             // 
             // Angebot
             // 
+            this.Angebot.Controls.Add(this.button1);
+            this.Angebot.Controls.Add(this.label1);
+            this.Angebot.Controls.Add(this.projektComboBox);
             this.Angebot.Location = new System.Drawing.Point(4, 22);
             this.Angebot.Name = "Angebot";
             this.Angebot.Size = new System.Drawing.Size(947, 497);
             this.Angebot.TabIndex = 2;
             this.Angebot.Text = "Angebot Generieren";
             this.Angebot.UseVisualStyleBackColor = true;
+            // 
+            // backgrdDBWorker
+            // 
+            this.backgrdDBWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgrdDBWorker_DoWork);
+            this.backgrdDBWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgrdDBWorker_RunWorkerCompleted);
+            // 
+            // projektComboBox
+            // 
+            this.projektComboBox.FormattingEnabled = true;
+            this.projektComboBox.Location = new System.Drawing.Point(368, 91);
+            this.projektComboBox.Name = "projektComboBox";
+            this.projektComboBox.Size = new System.Drawing.Size(469, 21);
+            this.projektComboBox.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(161, 94);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Auswahl ein Projekt";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(309, 238);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(314, 45);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Angebot generieren";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // ContractDetails
             // 
@@ -524,6 +563,8 @@
             this.Ansprechpartner.PerformLayout();
             this.Projekt.ResumeLayout(false);
             this.Projekt.PerformLayout();
+            this.Angebot.ResumeLayout(false);
+            this.Angebot.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -576,6 +617,10 @@
         private System.Windows.Forms.DateTimePicker endDatumDtPikr;
         private System.Windows.Forms.DateTimePicker startDatumDtPikr;
         private System.Windows.Forms.Button createProjectBtn;
+        private System.ComponentModel.BackgroundWorker backgrdDBWorker;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox projektComboBox;
     }
 }
 

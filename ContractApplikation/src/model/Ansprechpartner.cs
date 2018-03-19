@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ContractApplikation.Src.Helper;
+using System;
+using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Windows.Forms;
 
@@ -35,7 +37,7 @@ namespace ContractApplikation.Src.Model
 
         public String geschäftsbereich { get; private set; }
 
-        public Ansprechpartner(System.Collections.Generic.List<TextBox> listOfTextboxes, Honorifics bezeichnung)
+        public Ansprechpartner(List<TextBox> listOfTextboxes, Honorifics bezeichnung)
         {
             this.bezeichnung = bezeichnung.ToString();
 
@@ -58,6 +60,11 @@ namespace ContractApplikation.Src.Model
             this.firma               = dataReader.GetValue(9).ToString();
             this.abteilungszusatz    = dataReader.GetValue(10).ToString();
             this.geschäftsbereich    = dataReader.GetValue(11).ToString();
+        }
+
+        public String Name()
+        {
+            return Utilities.FirstLetterToUpperCase(bezeichnung) + "." + Utilities.FirstLetterToUpperCase(vorname) + " " + Utilities.FirstLetterToUpperCase(nachname);
         }
     }
 }

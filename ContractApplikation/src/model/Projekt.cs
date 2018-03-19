@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Windows.Forms;
 
@@ -26,25 +27,25 @@ namespace ContractApplikation.Src.Model
 
         public String projektBeschreibung { get; private set; }
 
-        public Projekt(Control.ControlCollection collection)
+        public Projekt(List<TextBox> listOfTextboxes)
         {
-            foreach (Control control in collection)
+            foreach (TextBox textBox in listOfTextboxes)
             {
-                this.GetType().GetProperty(control.Name).SetValue(this, control.Text);
+                this.GetType().GetProperty(textBox.Name).SetValue(this, textBox.Text);
             }
         }
 
         public Projekt(OleDbDataReader dataReader)
         {
-            this.projektNummer = dataReader.GetValue(1).ToString();
-            this.startDatum = dataReader.GetValue(2).ToString();
-            this.endDatum = dataReader.GetValue(3).ToString();
-            this.ansprechPartnerID = dataReader.GetValue(4).ToString();
-            this.anzahlStunden = dataReader.GetValue(5).ToString();
-            this.verrechnungssatz = dataReader.GetValue(6).ToString();
-            this.projektTitel = dataReader.GetValue(7).ToString();
-            this.gesprächsperson = dataReader.GetValue(8).ToString();
-            this.disponent = dataReader.GetValue(9).ToString();
+            this.projektNummer       = dataReader.GetValue(1).ToString();
+            this.startDatum          = dataReader.GetValue(2).ToString();
+            this.endDatum            = dataReader.GetValue(3).ToString();
+            this.ansprechPartnerID   = dataReader.GetValue(4).ToString();
+            this.anzahlStunden       = dataReader.GetValue(5).ToString();
+            this.verrechnungssatz    = dataReader.GetValue(6).ToString();
+            this.projektTitel        = dataReader.GetValue(7).ToString();
+            this.gesprächsperson     = dataReader.GetValue(8).ToString();
+            this.disponent           = dataReader.GetValue(9).ToString();
             this.projektBeschreibung = dataReader.GetValue(10).ToString();
         }
     }

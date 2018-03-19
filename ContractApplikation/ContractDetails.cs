@@ -4,6 +4,7 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Windows.Forms;
 using ContractApplikation.src.helper;
+using ContractApplikation.src.model;
 using ContractApplikation.Src.Model;
 
 namespace ContractApplikation
@@ -11,36 +12,40 @@ namespace ContractApplikation
 
     public partial class ContractDetails : Form
     {
+        private DataManager model;
 
         public ContractDetails()
         {
             InitializeComponent();
         }
 
-
-        private void createCustomer_Click(object sender, EventArgs e)
+        private List<TextBox> ListOfTextBoxFromControlCollection(Control.ControlCollection controlsForPage)
         {
-            if (customerDetailIsValid())
+            IEnumerable<TextBox> textboxControls = controlsForPage.OfType<TextBox>();
+            return textboxControls.ToList();
+        }
+
+        private void CreateCustomerBtnClicked(object sender, EventArgs e)
+        {
+            if (CustomerDetailIsValid())
             {
                 var controlsForCustomerTabPage = this.Controls[0].Controls[0].Controls;
-                Ansprechpartner kunden = generateCustomerWithControl(controlsForCustomerTabPage);
-                addCustomDetailToDatabase(kunden);
+                Ansprechpartner kunden = GenerateCustomerWithControl(controlsForCustomerTabPage);
+                OleDbHelper.InsertCustomerDetail(kunden);
             }
         }
 
-        private Ansprechpartner generateCustomerWithControl(Control.ControlCollection controlsForCustomerTabPage)
+        private Ansprechpartner GenerateCustomerWithControl(Control.ControlCollection controlsForCustomerTabPage)
         {
-            IEnumerable<TextBox> textboxControls = controlsForCustomerTabPage.OfType<TextBox>();
-            List<TextBox> listOfTextboxes = textboxControls.ToList();
-            return new Ansprechpartner(listOfTextboxes, getHonorificsForCustomer());
+            return new Ansprechpartner(ListOfTextBoxFromControlCollection(controlsForCustomerTabPage), GetHonorificsForCustomer());
         }
 
-        private Honorifics getHonorificsForCustomer()
+        private Honorifics GetHonorificsForCustomer()
         {
             return (herrRadioBtn.Checked ? Honorifics.HERR : Honorifics.FRAU);
         }
 
-        private void addCustomDetailToDatabase(Ansprechpartner kunden)
+        private void AddCustomDetailToDatabase(Ansprechpartner kunden)
         {
             OleDbConnection conn = new OleDbConnection();
             conn.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\Users\GRajan\source\repos\WindowsFormsApp1\WindowsFormsApp1\Vertrag-DB.accdb";
@@ -79,8 +84,7 @@ namespace ContractApplikation
             }
         }
 
-
-        private bool customerDetailIsValid()
+        private bool CustomerDetailIsValid()
         {
             var controlsForCustomerTabPage = this.Controls[0].Controls[0].Controls;
 
@@ -101,19 +105,78 @@ namespace ContractApplikation
             return false;
         }
 
-        private void createProjectBtn_Click(object sender, EventArgs e)
+        private void CreateProjectBtnClicked(object sender, EventArgs e)
         {
+            if (ProjectDetailIsValid())
+            {
+                var controlsForCustomerTabPage = this.Controls[0].Controls[0].Controls;
+                Projekt project = GenerateProjectWithControl(controlsForCustomerTabPage);
+                OleDbHelper.InsertProjectDetail(project);
+            }
+        }
 
+        private Projekt GenerateProjectWithControl(Control.ControlCollection controlsForProjectTabPage)
+        {
+            return new Projekt(ListOfTextBoxFromControlCollection(controlsForProjectTabPage));
+        }
+
+        private bool ProjectDetailIsValid()
+        {
+            var controlsForProjectTabPage = this.Controls[0].Controls[1].Controls;
+
+            TextBox emptyItem = controlsForProjectTabPage.OfType<TextBox>().FirstOrDefault(tb => String.IsNullOrWhiteSpace(tb.Text));
+            if (emptyItem != null)
+            {
+                MessageBox.Show("Geben Sie den " + emptyItem.Name + " ein");
+            }
+            else if (!herrRadioBtn.Checked && !frauRadioBtn.Checked)
+            {
+                MessageBox.Show("Wähle ein Geschlecht aus");
+            }
+            else
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private void ContractDetails_Load(object sender, EventArgs e)
         {
-            OleDbHelper helper = OleDbHelper.sharedInstance;
+            backgrdDBWorker.RunWorkerAsync();
+        }
 
-            helper.FetchProjectDetails();
+        private void BackgrdDBWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            model = new DataManager();
+        }
 
-            helper.FetchCustomerDetails();
+        private void BackgrdDBWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show("Backend Sync Completed");
+            UpdateComboBoxValues();
+        }
 
+        private void UpdateComboBoxValues()
+        {
+            UpdateCustomerComboBox();
+            UpdateProjectComboBox();
+        }
+
+        private void UpdateProjectComboBox()
+        {
+            foreach (Projekt proj in model.projectList)
+            {
+                projektComboBox.Items.Add(new CustomComboBoxItem(proj.projektTitel, proj));
+            }
+        }
+
+        private void UpdateCustomerComboBox()
+        {
+            foreach (Ansprechpartner cust in model.customerList)
+            {
+                ansprechpartnerComboBox.Items.Add(new CustomComboBoxItem(cust.Name(), cust));
+            }
         }
     }
 }
