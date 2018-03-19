@@ -1,0 +1,11 @@
+C:\Users\GRajan\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Vertrag-DB.accdb
+C:\Users\GRajan\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\GRajan\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\GRajan\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\GRajan\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Contract-maker.csprojResolveAssemblyReference.cache
+C:\Users\GRajan\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\GRajan\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Contract-maker.csproj.GenerateResource.cache
+C:\Users\GRajan\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Contract-maker.csproj.CoreCompileInputs.cache
+C:\Users\GRajan\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\GRajan\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\GRajan\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\ContractApplikation.ContractDetails.resources
