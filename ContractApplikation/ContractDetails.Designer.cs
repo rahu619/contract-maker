@@ -74,10 +74,10 @@
             this.projektnummer = new System.Windows.Forms.TextBox();
             this.projektnummerLbl = new System.Windows.Forms.Label();
             this.Angebot = new System.Windows.Forms.TabPage();
-            this.backgrdDBWorker = new System.ComponentModel.BackgroundWorker();
-            this.projektComboBox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.projektComboBox = new System.Windows.Forms.ComboBox();
+            this.backgrdDBWorker = new System.ComponentModel.BackgroundWorker();
             this.ContractGenerator.SuspendLayout();
             this.Ansprechpartner.SuspendLayout();
             this.Projekt.SuspendLayout();
@@ -361,6 +361,7 @@
             // 
             // ansprechpartnerComboBox
             // 
+            this.ansprechpartnerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ansprechpartnerComboBox.FormattingEnabled = true;
             this.ansprechpartnerComboBox.Location = new System.Drawing.Point(169, 202);
             this.ansprechpartnerComboBox.Name = "ansprechpartnerComboBox";
@@ -518,18 +519,14 @@
             this.Angebot.Text = "Angebot Generieren";
             this.Angebot.UseVisualStyleBackColor = true;
             // 
-            // backgrdDBWorker
+            // button1
             // 
-            this.backgrdDBWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgrdDBWorker_DoWork);
-            this.backgrdDBWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgrdDBWorker_RunWorkerCompleted);
-            // 
-            // projektComboBox
-            // 
-            this.projektComboBox.FormattingEnabled = true;
-            this.projektComboBox.Location = new System.Drawing.Point(368, 91);
-            this.projektComboBox.Name = "projektComboBox";
-            this.projektComboBox.Size = new System.Drawing.Size(469, 21);
-            this.projektComboBox.TabIndex = 0;
+            this.button1.Location = new System.Drawing.Point(309, 238);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(314, 45);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Angebot generieren";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -540,14 +537,19 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Auswahl ein Projekt";
             // 
-            // button1
+            // projektComboBox
             // 
-            this.button1.Location = new System.Drawing.Point(309, 238);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(314, 45);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Angebot generieren";
-            this.button1.UseVisualStyleBackColor = true;
+            this.projektComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.projektComboBox.FormattingEnabled = true;
+            this.projektComboBox.Location = new System.Drawing.Point(368, 91);
+            this.projektComboBox.Name = "projektComboBox";
+            this.projektComboBox.Size = new System.Drawing.Size(469, 21);
+            this.projektComboBox.TabIndex = 0;
+            // 
+            // backgrdDBWorker
+            // 
+            this.backgrdDBWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgrdDBWorker_DoWork);
+            this.backgrdDBWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgrdDBWorker_RunWorkerCompleted);
             // 
             // ContractDetails
             // 

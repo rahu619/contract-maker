@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ContractApplikation.src.helper
+namespace ContractApplikation.Src.Helper
 {
     public class CustomComboBoxItem
     {

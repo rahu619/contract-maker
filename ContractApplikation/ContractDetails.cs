@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Linq;
 using System.Windows.Forms;
-using ContractApplikation.src.helper;
-using ContractApplikation.src.model;
+using ContractApplikation.Src.Controller;
+using ContractApplikation.Src.Helper;
 using ContractApplikation.Src.Model;
 
 namespace ContractApplikation
@@ -30,8 +30,8 @@ namespace ContractApplikation
             if (CustomerDetailIsValid())
             {
                 var controlsForCustomerTabPage = this.Controls[0].Controls[0].Controls;
-                Ansprechpartner kunden = GenerateCustomerWithControl(controlsForCustomerTabPage);
-                OleDbHelper.InsertCustomerDetail(kunden);
+                model.AddCustomer(GenerateCustomerWithControl(controlsForCustomerTabPage));
+                UpdateCustomerComboBox();
             }
         }
 
@@ -45,6 +45,7 @@ namespace ContractApplikation
             return (herrRadioBtn.Checked ? Honorifics.HERR : Honorifics.FRAU);
         }
 
+        /**
         private void AddCustomDetailToDatabase(Ansprechpartner kunden)
         {
             OleDbConnection conn = new OleDbConnection();
@@ -84,6 +85,8 @@ namespace ContractApplikation
             }
         }
 
+        **/
+
         private bool CustomerDetailIsValid()
         {
             var controlsForCustomerTabPage = this.Controls[0].Controls[0].Controls;
@@ -109,15 +112,18 @@ namespace ContractApplikation
         {
             if (ProjectDetailIsValid())
             {
-                var controlsForCustomerTabPage = this.Controls[0].Controls[0].Controls;
-                Projekt project = GenerateProjectWithControl(controlsForCustomerTabPage);
-                OleDbHelper.InsertProjectDetail(project);
+                var controlsForProjectTabPage = this.Controls[0].Controls[1].Controls;
+                model.AddProject(GenerateProjectWithControl(controlsForProjectTabPage));
+                UpdateProjectComboBox();
             }
         }
 
         private Projekt GenerateProjectWithControl(Control.ControlCollection controlsForProjectTabPage)
         {
-            return new Projekt(ListOfTextBoxFromControlCollection(controlsForProjectTabPage));
+            List<TextBox> textboxes = ListOfTextBoxFromControlCollection(controlsForProjectTabPage);
+            textboxes.Add(Utilities.generateTextBoxWithNameAndValue("startDatum",   startDatumDtPikr.Value.ToString()));
+            textboxes.Add(Utilities.generateTextBoxWithNameAndValue("endDatum",     endDatumDtPikr.Value.ToString()));
+            return new Projekt(textboxes);
         }
 
         private bool ProjectDetailIsValid()
@@ -129,7 +135,7 @@ namespace ContractApplikation
             {
                 MessageBox.Show("Geben Sie den " + emptyItem.Name + " ein");
             }
-            else if (!herrRadioBtn.Checked && !frauRadioBtn.Checked)
+            else if (!String.IsNullOrWhiteSpace(startDatumDtPikr.Text) && !String.IsNullOrWhiteSpace(endDatumDtPikr.Text))
             {
                 MessageBox.Show("Wähle ein Geschlecht aus");
             }
@@ -153,10 +159,22 @@ namespace ContractApplikation
 
         private void BackgrdDBWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show("Backend Sync Completed");
             UpdateComboBoxValues();
         }
 
+        /**
+        private void BindComboBoxValues()
+        {
+            projektComboBox.DataSource      = model.ProjectList;
+            projektComboBox.DisplayMember   = "ProjektTitel";
+            projektComboBox.ValueMember     = null;
+
+            ansprechpartnerComboBox.DataSource      = model.CustomerList;
+            ansprechpartnerComboBox.DisplayMember   = "Name";
+            ansprechpartnerComboBox.ValueMember     = null;
+        }
+    **/
+    
         private void UpdateComboBoxValues()
         {
             UpdateCustomerComboBox();
@@ -165,17 +183,19 @@ namespace ContractApplikation
 
         private void UpdateProjectComboBox()
         {
-            foreach (Projekt proj in model.projectList)
+            projektComboBox.Items.Clear();
+            foreach (Projekt proj in model.ProjectList)
             {
-                projektComboBox.Items.Add(new CustomComboBoxItem(proj.projektTitel, proj));
+                projektComboBox.Items.Add(new CustomComboBoxItem(proj.ProjektTitel, proj));
             }
         }
 
         private void UpdateCustomerComboBox()
         {
-            foreach (Ansprechpartner cust in model.customerList)
+            ansprechpartnerComboBox.Items.Clear();
+            foreach (Ansprechpartner cust in model.CustomerList)
             {
-                ansprechpartnerComboBox.Items.Add(new CustomComboBoxItem(cust.Name(), cust));
+                ansprechpartnerComboBox.Items.Add(new CustomComboBoxItem(cust.Name, cust));
             }
         }
     }

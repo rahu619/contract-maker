@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Windows.Forms;
 
-namespace ContractApplikation.src.helper
+namespace ContractApplikation.Src.Helper
 {
     public class OleDbHelper
     {
@@ -32,19 +32,19 @@ namespace ContractApplikation.src.helper
 
             if (cmd.Connection.State == System.Data.ConnectionState.Open)
             {
-                cmd.Parameters.Add("@Bezeichnung", OleDbType.VarChar).Value = kunden.bezeichnung;
-                cmd.Parameters.Add("@Vorname", OleDbType.VarChar).Value = kunden.vorname;
-                cmd.Parameters.Add("@Nachname", OleDbType.VarChar).Value = kunden.nachname;
-                cmd.Parameters.Add("@Abteilung", OleDbType.VarChar).Value = kunden.abteilung;
-                cmd.Parameters.Add("@Email", OleDbType.VarChar).Value = kunden.email;
-                cmd.Parameters.Add("@Telefon", OleDbType.VarChar).Value = kunden.telefon;
-                cmd.Parameters.Add("@Strasse", OleDbType.VarChar).Value = kunden.strasse;
-                cmd.Parameters.Add("@Ort", OleDbType.VarChar).Value = kunden.ort;
-                cmd.Parameters.Add("@Firma", OleDbType.VarChar).Value = kunden.firma;
-                cmd.Parameters.Add("@Abteilungszusatz", OleDbType.VarChar).Value = kunden.abteilungszusatz;
-                cmd.Parameters.Add("@Geschäftsbereich", OleDbType.VarChar).Value = kunden.geschäftsbereich;
+                cmd.Parameters.Add("@Bezeichnung", OleDbType.VarChar).Value = kunden.Bezeichnung;
+                cmd.Parameters.Add("@Vorname", OleDbType.VarChar).Value = kunden.Vorname;
+                cmd.Parameters.Add("@Nachname", OleDbType.VarChar).Value = kunden.Nachname;
+                cmd.Parameters.Add("@Abteilung", OleDbType.VarChar).Value = kunden.Abteilung;
+                cmd.Parameters.Add("@Email", OleDbType.VarChar).Value = kunden.Email;
+                cmd.Parameters.Add("@Telefon", OleDbType.VarChar).Value = kunden.Telefon;
+                cmd.Parameters.Add("@Strasse", OleDbType.VarChar).Value = kunden.Strasse;
+                cmd.Parameters.Add("@Ort", OleDbType.VarChar).Value = kunden.Ort;
+                cmd.Parameters.Add("@Firma", OleDbType.VarChar).Value = kunden.Firma;
+                cmd.Parameters.Add("@Abteilungszusatz", OleDbType.VarChar).Value = kunden.Abteilungszusatz;
+                cmd.Parameters.Add("@Geschäftsbereich", OleDbType.VarChar).Value = kunden.Geschäftsbereich;
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Customer details of " + kunden.vorname + " is successfully entered to the database.");
+                MessageBox.Show("Customer details of " + kunden.Vorname + " is successfully entered to the database.");
             }
         }
 
@@ -57,18 +57,18 @@ namespace ContractApplikation.src.helper
 
             if (cmd.Connection.State == System.Data.ConnectionState.Open)
             {
-                cmd.Parameters.Add("@Projektnummer", OleDbType.VarChar).Value       = project.projektNummer;
-                cmd.Parameters.Add("@StartDatum", OleDbType.VarChar).Value          = project.startDatum;
-                cmd.Parameters.Add("@EndDatum", OleDbType.VarChar).Value            = project.endDatum;
-                cmd.Parameters.Add("@AnsprechpartnerID", OleDbType.VarChar).Value   = project.ansprechPartnerID;
-                cmd.Parameters.Add("@AnzahlStunden", OleDbType.VarChar).Value       = project.anzahlStunden;
-                cmd.Parameters.Add("@Verrechnungssatz", OleDbType.VarChar).Value    = project.verrechnungssatz;
-                cmd.Parameters.Add("@ProjektTitel", OleDbType.VarChar).Value        = project.projektTitel;
-                cmd.Parameters.Add("@Gesprächsperson", OleDbType.VarChar).Value     = project.gesprächsperson;
-                cmd.Parameters.Add("@Disponent", OleDbType.VarChar).Value           = project.disponent;
-                cmd.Parameters.Add("@ProjektBeschreibung", OleDbType.VarChar).Value = project.projektBeschreibung;
+                cmd.Parameters.Add("@Projektnummer", OleDbType.VarChar).Value       = project.Projektnummer;
+                cmd.Parameters.Add("@StartDatum", OleDbType.VarChar).Value          = project.StartDatum;
+                cmd.Parameters.Add("@EndDatum", OleDbType.VarChar).Value            = project.EndDatum;
+                cmd.Parameters.Add("@AnsprechpartnerID", OleDbType.VarChar).Value   = project.AnsprechPartnerID;
+                cmd.Parameters.Add("@AnzahlStunden", OleDbType.VarChar).Value       = project.AnzahlStunden;
+                cmd.Parameters.Add("@Verrechnungssatz", OleDbType.VarChar).Value    = project.Verrechnungssatz;
+                cmd.Parameters.Add("@ProjektTitel", OleDbType.VarChar).Value        = project.ProjektTitel;
+                cmd.Parameters.Add("@Gesprächsperson", OleDbType.VarChar).Value     = project.Gesprächsperson;
+                cmd.Parameters.Add("@Disponent", OleDbType.VarChar).Value           = project.Disponent;
+                cmd.Parameters.Add("@ProjektBeschreibung", OleDbType.VarChar).Value = project.ProjektBeschreibung;
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Project details of " + project.projektTitel + " is successfully entered to the database.");
+                MessageBox.Show("Project details of " + project.ProjektTitel + " is successfully entered to the database.");
             }
         }
 
