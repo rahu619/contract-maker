@@ -1,0 +1,22 @@
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\obj\Debug\ContractApplikation.csprojResolveAssemblyReference.cache
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\obj\Debug\ContractApplikation.ContractDetails.resources
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\obj\Debug\ContractApplikation.Properties.Resources.resources
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\obj\Debug\ContractApplikation.csproj.GenerateResource.cache
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\obj\Debug\ContractApplikation.csproj.CoreCompileInputs.cache
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\bin\Debug\Vertrag-DB.accdb
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\bin\Debug\ContractApplikation.exe.config
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\bin\Debug\ContractApplikation.exe
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\bin\Debug\ContractApplikation.pdb
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\obj\Debug\ContractApplikation.exe
+C:\Users\GRajan\source\repos\ContractApplikation\ContractApplikation\obj\Debug\ContractApplikation.pdb
+Z:\VS projects\contract-maker-develop\contract-maker-develop\ContractApplikation\obj\Debug\ContractApplikation.csprojResolveAssemblyReference.cache
+Z:\VS projects\contract-maker-develop\contract-maker-develop\ContractApplikation\obj\Debug\ContractApplikation.ContractDetails.resources
+Z:\VS projects\contract-maker-develop\contract-maker-develop\ContractApplikation\obj\Debug\ContractApplikation.Properties.Resources.resources
+Z:\VS projects\contract-maker-develop\contract-maker-develop\ContractApplikation\obj\Debug\ContractApplikation.csproj.GenerateResource.Cache
+Z:\VS projects\contract-maker-develop\contract-maker-develop\ContractApplikation\obj\Debug\ContractApplikation.csproj.CoreCompileInputs.cache
+Z:\VS projects\contract-maker-develop\contract-maker-develop\ContractApplikation\obj\Debug\ContractApplikation.exe
+Z:\VS projects\contract-maker-develop\contract-maker-develop\ContractApplikation\obj\Debug\ContractApplikation.pdb
+Z:\VS projects\contract-maker-develop\contract-maker-develop\ContractApplikation\bin\Debug\Vertrag-DB.accdb
+Z:\VS projects\contract-maker-develop\contract-maker-develop\ContractApplikation\bin\Debug\ContractApplikation.exe.config
+Z:\VS projects\contract-maker-develop\contract-maker-develop\ContractApplikation\bin\Debug\ContractApplikation.exe
+Z:\VS projects\contract-maker-develop\contract-maker-develop\ContractApplikation\bin\Debug\ContractApplikation.pdb
